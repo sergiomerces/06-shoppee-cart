@@ -24,8 +24,6 @@ async function removeItem(userCart, index) {
     }
 }
 
-
-
 async function displayCart(userCart) {
     console.log('Shoppee Cart List: ');
     userCart.forEach((item, index)=>{
