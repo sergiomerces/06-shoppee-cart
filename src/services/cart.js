@@ -5,24 +5,45 @@ async function addItem(userCart, item) {
     userCart.push(item);
 }
 
-//deletar item do carrinho
+//deletar item do carrinho - exclui
 async function deleteItem(userCart, name) {
-    
+    const index = userCart.cartfindIndex((item) => item.name === name);
+
+    if(index !== -1){
+        userCart.Cart.splice(index, 1);
+    }
 }
-//remover item do carrinho
+//remover item do carrinho - diminui
 async function removeItem(userCart, index) {
+    //transforma o número visual para o usuário no número de index
+    const deleteIndex = index -1;
     
+    //se é maior que zero ou se é maior que o tamanho do carrinho
+    if(index >= 0 && index < userCart.length) {
+        userCart.splice(deleteIndex, 1);
+    }
 }
 
-//calcular total
+
+
+async function displayCart(userCart) {
+    console.log('Shoppee Cart List: ');
+    userCart.forEach((item, index)=>{
+        console.log(`${index + 1}. ${index.name} - ${item.price} - ${item.quantity} - Subtotal ${item.subtotal()}`);
+    });
+}
+
+//calcular total do carrinho
 async function calculateTotal(userCart) {
+    console.log('\nShoppee Cart TOTAL is: ');
     const result = userCart.reduce((total, item) => total + item.subtotal(), 0);
-    console.log(result);
+    console.log(`\nTotal: ${result}`);
 }
 
 export {
     addItem,
     deleteItem,
     removeItem,
-    calculateTotal
+    calculateTotal,
+    displayCart
 };
