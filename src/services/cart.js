@@ -27,7 +27,7 @@ async function removeItem(userCart, index) {
 async function displayCart(userCart) {
     console.log('Shoppee Cart List: ');
     userCart.forEach((item, index)=>{
-        console.log(`${index + 1}. ${index.name} - ${item.price} - ${item.quantity} - Subtotal ${item.subtotal()}`);
+        console.log(`${index + 1}. ${item.name} - ${item.price} - ${item.quantity} - Subtotal ${item.subtotal()}`);
     });
 }
 
